@@ -32413,12 +32413,12 @@ weighted avg       0.99      0.99      0.99      7826
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[82]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[86]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="c1"># Model Evaluation</span>
@@ -32439,16 +32439,22 @@ weighted avg       0.99      0.99      0.99      7826
     <span class="s1">'ROC_AUC'</span><span class="p">:</span> <span class="n">roc_auc_new</span><span class="p">,</span>
     <span class="s1">'Precision_Recall_AUC'</span><span class="p">:</span> <span class="n">pr_auc_new</span>
 <span class="p">}</span>
+</pre></div>
 
-<span class="n">new_metrics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s1">'Model'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'New_Model'</span><span class="p">],</span>
-    <span class="s1">'Accuracy'</span><span class="p">:</span> <span class="p">[</span><span class="n">accuracy_new</span><span class="p">],</span>
-    <span class="s1">'ROC AUC'</span><span class="p">:</span> <span class="p">[</span><span class="n">roc_auc_new</span><span class="p">]</span>
-<span class="p">})</span>
+     </div>
+</div>
+</div>
+</div>
 
-<span class="n">model_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">model_summary</span><span class="p">,</span> <span class="n">new_metrics</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Model Metrics:"</span><span class="p">)</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[89]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Model Metrics:"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">model</span><span class="p">,</span> <span class="n">metrics</span> <span class="ow">in</span> <span class="n">model_metrics</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">:"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Confusion Matrix:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">metrics</span><span class="p">[</span><span class="s1">'Confusion_Matrix'</span><span class="p">])</span>
@@ -32458,10 +32464,6 @@ weighted avg       0.99      0.99      0.99      7826
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Model Summary:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">model_summary</span><span class="p">)</span>
-
-<span class="c1"># Create an empty DataFrame to store the model summary</span>
-<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Model'</span><span class="p">,</span> <span class="s1">'Accuracy'</span><span class="p">,</span> <span class="s1">'ROC AUC'</span><span class="p">,</span> <span class="s1">'Precision_Non_MVP'</span><span class="p">,</span> <span class="s1">'Recall_Non_MVP'</span><span class="p">,</span> <span class="s1">'F1_Non_MVP'</span><span class="p">,</span> <span class="s1">'Precision_MVP'</span><span class="p">,</span> <span class="s1">'Recall_MVP'</span><span class="p">,</span> <span class="s1">'F1_MVP'</span><span class="p">]</span>
-<span class="n">model_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
 
 <span class="c1"># Function to extract precision, recall, and F1-score from the classification report</span>
 <span class="k">def</span> <span class="nf">extract_metrics</span><span class="p">(</span><span class="n">report</span><span class="p">):</span>
@@ -32473,6 +32475,9 @@ weighted avg       0.99      0.99      0.99      7826
     <span class="n">recall_mvp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">])</span>
     <span class="n">f1_mvp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">precision_non_mvp</span><span class="p">,</span> <span class="n">recall_non_mvp</span><span class="p">,</span> <span class="n">f1_non_mvp</span><span class="p">,</span> <span class="n">precision_mvp</span><span class="p">,</span> <span class="n">recall_mvp</span><span class="p">,</span> <span class="n">f1_mvp</span>
+
+<span class="c1"># Clear the model_summary DataFrame</span>
+<span class="n">model_summary</span> <span class="o">=</span> <span class="n">model_summary</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># Update model_summary with metrics for each model</span>
 <span class="k">for</span> <span class="n">model</span><span class="p">,</span> <span class="n">metrics</span> <span class="ow">in</span> <span class="n">model_metrics</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -32491,9 +32496,6 @@ weighted avg       0.99      0.99      0.99      7826
         <span class="s1">'Recall_MVP'</span><span class="p">:</span> <span class="p">[</span><span class="n">recall_mvp</span><span class="p">],</span>
         <span class="s1">'F1_MVP'</span><span class="p">:</span> <span class="p">[</span><span class="n">f1_mvp</span><span class="p">]</span>
     <span class="p">})],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Model Summary:"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model_summary</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -32591,20 +32593,6 @@ Model Summary:
 1  Feature_Engineered_Model  0.980856  0.956272               0.98            1.00        0.99   
 2               Tuned_Model  0.940315  0.994489               1.00            0.94        0.97   
 3                 New_Model  0.989865  0.993519               0.99            1.00        0.99   
-4                 New_Model  0.989865  0.993519                NaN             NaN         NaN   
-
-   Precision_MVP  Recall_MVP  F1_MVP  
-0           0.56        0.26    0.36  
-1           0.62        0.26    0.37  
-2           0.26        0.95    0.40  
-3           0.86        0.63    0.73  
-4            NaN         NaN     NaN  
-Model Summary:
-                      Model  Accuracy   ROC AUC  Precision_Non_MVP  Recall_Non_MVP  F1_Non_MVP  \
-0                Base_Model  0.979730  0.964811               0.98            1.00        0.99   
-1  Feature_Engineered_Model  0.980856  0.956272               0.98            1.00        0.99   
-2               Tuned_Model  0.940315  0.994489               1.00            0.94        0.97   
-3                 New_Model  0.989865  0.993519               0.99            1.00        0.99   
 
    Precision_MVP  Recall_MVP  F1_MVP  
 0           0.56        0.26    0.36  
@@ -32626,7 +32614,9 @@ Model Summary:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>This was a great exploration into model building, feature engineering, and model tuning. In the end, we got pretty solid results from our different</p>
+<p>This was a great exploration into model building, feature engineering, and model tuning. In the end, we got pretty solid results from our different models. Based on the evaluation metrics, the New Model seems to be the best-performing model overall. It has high accuracy, a high ROC AUC score, and the best precision, recall, and F1-score for the MVP class.
+The Tuned Model has a high recall for the MVP class but suffers from low precision, indicating a high number of false positives.
+The Base Model and Feature Engineered Model have similar performance, with high precision and recall for the non-MVP class but lower recall for the MVP class.</p>
 
 </div>
 </div>
